@@ -1,0 +1,39 @@
+<div *ngIf="!viewMode">
+    <div *ngIf="currentEmployee.id; else cannotAccess">
+      <div class="edit-form">
+        <h4>Employee</h4>
+        <form>
+          <!-- Form fields -->
+  
+          <div class="form-group">
+            <label><strong>Name:</strong></label>
+            {{ currentEmployee.name }}
+          </div>
+        </form>
+  
+        <ng-container *ngIf="currentEmployee.name; else publishButton">
+          <button class="badge badge-primary mr-2" (click)="updateName('statusValue')">
+            UnPublish
+          </button>
+        </ng-container>
+        <ng-template #publishButton>
+          <button class="badge badge-primary mr-2" (click)="updateName('statusValue')">
+            Publish
+          </button>
+        </ng-template>
+  
+        <button class="badge badge-danger mr-2" (click)="deleteEmployee()">
+          Delete
+        </button>
+  
+        <button type="submit" class="badge badge-success mb-2" (click)="updateEmployee()">
+          Update
+        </button>
+        <p>{{ message }}</p>
+      </div>
+    </div>
+    <ng-template #cannotAccess>
+      <p>Cannot access this Employee...</p>
+    </ng-template>
+  </div>
+  

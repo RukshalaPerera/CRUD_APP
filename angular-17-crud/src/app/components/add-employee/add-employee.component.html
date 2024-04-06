@@ -1,0 +1,53 @@
+<div>
+    <div class="submit-form">
+      <ng-container *ngIf="!submitted">
+        <!-- Form for adding a new employee -->
+        <div class="form-group">
+          <label for="nic">NIC:</label><br>
+          <input
+            type="text"
+            class="form-control"
+            id="nic"
+            required
+            [(ngModel)]="employee.nic"
+            name="nic"
+          />
+        </div>
+  
+        <div class="form-group">
+            <label for="name">Name:</label><br>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              [(ngModel)]="employee.name"
+              name="name"
+            />
+        </div>
+          
+  
+        <div class="form-group">
+          <label for="description">Description:</label><br>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="employee.description"
+            name="description"
+          />
+        </div> <br>
+
+        <!-- Button to submit the form -->
+        <button (click)="saveEmployee()" class="btn btn-success">Submit</button>
+      </ng-container>
+  
+      <!-- Message displayed after form submission -->
+      <ng-container *ngIf="submitted">
+        <h4>Employee was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newEmployee()">Add</button>
+      </ng-container>
+    </div>
+  </div>
+  
